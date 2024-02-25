@@ -1,0 +1,122 @@
+*{
+    padding:0;
+    margin:0;
+    box-sizing:border-box;
+    font-family:'Roboto';
+}
+body{
+    background:url('https://images.pexels.com/photos/552789/pexels-photo-552789.jpeg?auto=compress&cs=tinysrgb&w=600') ;
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-blend-mode:darken;
+}
+.head{
+    display:flex;
+    color:white;
+    height:70px;
+    align-items:center;
+}
+.Xplore{
+    display:flex;
+    align-items:center;
+    padding:0px 15px;
+    width:50vw;
+    padding:0 5vw;
+    gap:5px;
+}
+.Xplore>:first-child{
+    font-size:20px;
+}
+
+ 
+.plan{
+    display:flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 50vw;
+}
+ 
+.lis ul{
+    gap:5vw;
+    display: flex;
+    /* justify-content: space-evenly; */
+    align-items: center;
+    /* gap:0 12px */
+}
+.lis ul li {
+    list-style: none;
+}
+.lis ul li a{
+    color:white;
+    text-decoration:none;
+}
+.booking{
+    display: flex;
+    background-color: #ff0055;
+    padding:10px 20px;
+    gap:5px;
+    border-radius:5px;
+}
+.booking button{
+    background:transparent;
+    border:none;
+    color:white;
+    font-weight:600;
+}
+.content{
+    
+    color:white;
+    margin: 20vh 5vw;
+    width:36vw;
+    
+}
+.content h1 {
+    font-size:40px;
+    
+}
+.content p{
+    margin:4vh 0;
+}
+.country{
+    background-color:white;
+    height:8vh;
+    display:flex;
+    align-content:center;
+    border-radius:4px;
+}
+.country input{
+    padding:0 10px;
+    border:none;
+    width:80%;
+    border-top-left-radius:4px ;
+    border-bottom-left-radius:4px ;
+}
+.country input ::placeholder{
+    font-size:20px;
+}
+.country button{
+    background-color:#ff0055;
+    border:none;
+    margin:5px;
+    color:white;
+    font-weight:600;
+    border-radius:3px;
+    width:20%;
+}
+
+@media screen and (max-width: 600px) {
+    .Xplore {
+        width: auto;
+    }
+
+    .plan {
+        display: flex; 
+        width: auto; 
+    }
+
+    .content {
+        width: 80vw; 
+        margin: 10vh 5vw; 
+    }
+}
+ 

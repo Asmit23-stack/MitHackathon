@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="calculator.css">
+    <link rel="stylesheet" href="calculator.123.css">
+    <title>caculator</title>
+</head>
+<body>
+    <div class="logo">
+        <img src="https://media.tenor.com/JY2fRmOGB1UAAAAM/cheer-happy.gif" alt="dsfghjklkfdghjl">
+
+    </div>
+    <h1 class="textcenter">Welcome to Calculator </h1>
+    <div class="container   red"></div>
+    <div class="row">
+        <input class="input" type="text">
+        <button>Del</button>
+    </div>
+    <div class="row">
+        <button class="button">C</button>
+        <button class="button">%</button>
+        <button class="button">m+</button>
+        <button class="button">m-</button>
+        <!-- <div class="button"> </div> -->
+    </div> 
+    <div class="row">
+        <button class="button">7</button>
+        <button class="button">8</button>
+        <button class="button">9</button>
+        <button class="button">/</button>
+        <!-- <div class="button"> </div> -->
+    </div>
+    <div class="row">
+        <button class="button">4</button>
+        <button class="button">5</button>
+        <button class="button">6</button>
+        <button class="button">*</button>
+        <!-- <div class="button"> </div> -->
+    </div> 
+    <div class="row">
+        <button class="button">1</button>
+        <button class="button">2</button>
+        <button class="button">3</button>
+        <button class="button">-</button>
+        <!-- <div class="button"> </div> -->
+    </div>
+    <div class="row">
+        <button class="button" colspan="2">0</button>
+        <button class="button">.</button>
+        <!-- <div class="button"></div> -->
+        <button class="button">=</button>
+        <button class="button">+</button>
+        <!-- <div class="button"> </div> -->
+    </div>
+    <script >let string =" ";
+        let buttons = document.querySelectorAll("button")
+        Array.from(buttons).forEach((button)=>{
+        button.addEventlistener('click',(e)=>{
+            if(e.target.innerHTML == "="){
+                string =eval(string)
+             document.querySelector('input').value = string;
+        
+            }
+            else{
+            console.log(e.target)
+             string= string + e.target.innerHTML;
+             document.querySelector('input').value = string;
+            }
+        })
+        
+        })
+    const newlelement = document.createElement("div")
+    const newtext = document.createTextNode("NAMASTE WORLD")
+    newlelement.appendChild(newtext)
+    body.prepend(newelement)</script>
+    
+</body>
+</html>

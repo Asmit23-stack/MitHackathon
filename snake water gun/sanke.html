@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Water Gun</title>
+</head>
+<body>
+    <h1>Play Snake water Gun</h1>
+    <h2>Characters: </h2>
+    <h2>
+        <pre>
+            Rules:
+            1.Water can drow Gun.
+            2.Gun could shoot Snake.
+            3.Snake could drink the Water
+        </pre>
+    </h2>
+    <hr><br><br><br>
+    <div class="winner">
+        <br><br><br>
+    </div>
+    <script>
+        let user =prompt(" Enter Snake,Water or Gun")
+        let op_1=Math.floor(Math.random() * 3)
+        let op =['snake' , 'water' , 'gun']
+         
+        // function
+      const match =()=>{
+        if( cpu ==='snake' user==='water'){
+            return 'cpu'
+        else if( user ==='snake' cpu==='water'){
+            return 'user'
+        else if( user ==='snake' cpu==='gun'){
+            return 'cpu'
+        else if( user ==='gun' cpu==='snake'){
+            return 'user'
+        else if( user ==='water' cpu==='gun'){
+            return 'user'
+        else if( user ==='gun' cpu==='water'){
+            return 'cpu'
+        }
+        else {
+            return 'none'
+        }
+    }
+         let wow =match(user,cpu)
+         let winner =document.queryselector('.winner')
+         if(cpu===user){
+            document.write(`cpu chose:${cpu} <br> you choos: ${user}`)
+            winner.innerHTML=`You have entered same character.|.No Winner|...`
+            
+         }
+          else if(wow===user){
+            document.write(`cpu chose:${cpu} <br> you choos: ${user}`)
+            winner.innerHTML=`YOU ARE WINNER`
+            
+         }
+         else(cpu===user){
+            document.write(`cpu chose:${cpu} <br> you choos: ${user}`)
+            winner.innerHTML=`CPU IS WINNER`
+         }
+
+    </script>
+</body>
+</html>

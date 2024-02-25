@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Aqua</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="navbar">
+
+                <div class="login">
+                    <h3>Web Dev Creative</h3>
+                </div>
+                <div class="info">
+
+                    <ul>
+                        <li><a>Home</a></li>
+                        <li><a>About</a></li>
+                        <li><a>Sevices</a></li> <!-- Fixed typo here -->
+                        <li><a>Contact</a></li>
+                    </ul>
+
+                </div>
+                <div class="strG">
+                    <a class="str-btn">Get started</a>
+                </div>
+                <div class="menu">
+                    <svg class="toogleBtn1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"></path></svg>
+                    <svg class="toogleBtn2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;"><path d="m16.192 6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242 1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z"></path></svg>
+                    
+                </div>
+            </div>
+        </nav>
+    </header>
+    <section class="secContent">
+        <div class="content">
+            <h3>Welcome</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque dolore nemo, quos ipsum excepturi impedit eligendi! Tempora, atque. Eius, obcaecati autem! Distinctio maiores a dolorum incidunt molestias, eligendi soluta qui quo nihil?
+                
+            </p>
+        </div>
+    </section>
+    <div class="toogleBtn">
+        <ul>
+            <li><a>Home</a></li>
+            <li><a>About</a></li>
+            <li><a>Services</a></li>
+            <li><a>Contact</a></li>
+        </ul>
+            <div class="strG2">
+                <ul>
+                    <li class='str-btn'><a>Get started</a></li>
+                </ul>
+            </div>
+    </div>
+    <script>
+        let toogleIcon1 = document.querySelector('.toogleBtn1');
+        let toogleIcon2 = document.querySelector('.toogleBtn2');
+        let dropDown = document.querySelector(".toogleBtn");
+        dropDown.style.display='none';
+        toogleIcon2.style.display='none';
+        let isValue =1
+        toogleIcon1.addEventListener('click',()=>{
+                // dropDown.style.backgroundColor='red';
+                dropDown.style.display='flex';
+                toogleIcon2.style.display='block';
+                toogleIcon1.style.display='none';
+            })
+// toogleIcon1.classList.toggle('click'(()=>{
+//     dropDown.style.display='flex';
+//                 toogleIcon2.style.display='block';
+//                 toogleIcon1.style.display='none';
+// }))
+        toogleIcon2.addEventListener('click',()=>{
+        
+            toogleIcon1.style.display='block';
+            toogleIcon2.style.display='none';
+            // dropDown.style.backgroundColor='pink';
+            dropDown.style.display='none';
+        })
+    </script>
+</body>
+
+</html>
