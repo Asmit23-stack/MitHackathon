@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthTrack AI | Symptom Tracker</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --text-primary: #1f2937;
+            --bg-primary: #ffffff;
+            --border-color: #e5e7eb;
+        }
+
+        [data-theme="dark"] {
+            --primary: #6366f1;
+            --text-primary: #f9fafb;
+            --bg-primary: #111827;
+            --border-color: #4b5563;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+            transition: all 0.3s;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo {
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        /* Google Sign-In */
+        .g_id_signin {
+            margin-left: 10px;
+        }
+
+        /* Chat Interface */
+        .chat-container {
+            margin-top: 20px;
+        }
+
+        .message {
+            margin-bottom: 25px;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: var(--bg-primary);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .ai-message {
+            border-left: 4px solid var(--primary);
+        }
+
+        .user-message {
+            background-color: rgba(79, 70, 229, 0.05);
+            margin-left: 30px;
+        }
+
+        /* Input Area */
+        .input-container {
+            margin-top: 20px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            resize: none;
+            min-height: 60px;
+        }
+
+        /* Dark Mode Toggle */
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">HealthTrack AI</div>
+            <div>
+                <div id="g_id_onload"
+                    data-client_id="YOUR_CLIENT_ID.apps.googleusercontent.com"
+                    data-context="signin"
+                    data-ux_mode="popup"
+                    data-callback="handleGoogleSignIn"
+                    data-auto_prompt="false">
+                </div>
+                <div class="g_id_signin"
+                    data-type="standard"
+                    data-shape="pill"
+                    data-theme="filled_blue"
+                    data-text="signin_with"
+                    data-size="medium">
+                </div>
+                <button class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </header>
+
+        <div class="chat-container">
+            <!-- Exact recreation of your image's conversation -->
+            <div class="message ai-message">
+                <p>Hello, Vedang</p>
+                <p>How can I help you today?</p>
+            </div>
+
+            <div class="message ai-message">
+                <p>Chi-square test me today plans "feeling badly"</p>
+                <p>What symptoms are you experiencing?</p>
+                <p>I knew you heard feeling flapped or unusually tired?</p>
+                <p>Do you have a fever or chitch?</p>
+            </div>
+
+            <div class="message ai-message" style="background-color: #f0f0f0; color: #333;">
+                <h3>Intrilogy PPM</h3>
+                <p>Clawcoff may display maximum info, including about people, on emails-checks for responses.</p>
+                <p style="text-align: right; font-size: 1.5rem;">67</p>
+            </div>
+        </div>
+
+        <div class="input-container">
+            <textarea placeholder="Type your symptoms here..."></textarea>
+        </div>
+    </div>
+
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script>
+        // Theme Toggle
+        document.querySelector('.theme-toggle').addEventListener('click', function() {
+            document.body.setAttribute('data-theme', 
+                document.body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+            
+            const icon = this.querySelector('i');
+            icon.classList.toggle('fa-moon');
+            icon.classList.toggle('fa-sun');
+        });
+
+        // Google Sign-In Handler
+        function handleGoogleSignIn(response) {
+            console.log('Google sign-in successful', response);
+            // Hide sign-in button after successful login
+            document.querySelector('.g_id_signin').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
