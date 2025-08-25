@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+:root {
+    --primary-color: #007bff;
+    --dark-blue: #3b5998;
+    --light-blue: #e7f3ff;
+    --sidebar-bg: #f8f9fa;
+    --text-color: #333;
+    --border-color: #dee2e6;
+    --footer-bg: #212529;
+}
+
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 60px;
+  background: #2b2b2b;
+  border-radius: 10px;
+  flex-wrap: wrap;
+  color: #ddd;
+  margin-top: 10px;
+  margin-bottom: 3px;
+}
+
+/* Left */
+.footer-left {
+  max-width: 350px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-box {
+  width: 40px;
+  height: 40px;
+  
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.logo-text {
+  font-size: 22px;
+  background: linear-gradient(90deg, #8a2be2, #00bcd4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.copyright,
+.disclaimer {
+  font-size: 13px;
+  margin: 8px 0;
+  color: #aaa;
+}
+
+/* Right columns */
+.footer-right {
+  display: flex;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.footer-column h3 {
+  font-size: 16px;
+  margin-bottom: 12px;
+  color: #fff;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 8px;
+}
+
+.footer-column ul li a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-column ul li a:hover {
+  /* color: #00bcd4; */
+  color: #00bcd4;
+}
+
+/* Social icons */
+.socials {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #444;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.icon:hover {
+  background: #00bcd4;
+}
+
+.site-footer {
+    background-color: var(--footer-bg);
+    color: #fff;
+    padding: 60px 20px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 40px;
+}
+
+.footer-brand {
+    flex: 1.5;
+}
+
+.footer-links {
+    display: flex;
+    flex: 2;
+    justify-content: space-around;
+}
+
+.link-column h4 {
+    margin-bottom: 15px;
+}
+
+.link-column a {
+    color: #ccc;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.social-icons i {
+    margin-right: 15px;
+    cursor: pointer;
+}

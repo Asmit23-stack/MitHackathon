@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MathPath | AI Tutor</title>
+    <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="footer.css">
+    <!-- Link to Font Awesome for icons -->
+     <link rel="icon" href="https://mathos.ai/favicon.ico" type="image/x-icon">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-T2mczjp7mtAAK0eLZpyPgTbiIv9xkgrWhD7jFmT6QzU1bbFrlKX5WpqZ3Ra5gJjPwlOV5rT2H1Y2F7iQl9r0Zg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <button class="sidebar-toggle"><i class="fas fa-chevron-left"></i></button>
+            <div class="sidebar-header">
+                <h2 class="logo-text"><img src="icon.jpeg"  class = "icon_main"alt="logo"> <span class="sidebar-text">MathPath</span></h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active"><a href="#"><i class="fas fa-calculator"></i> <span class="sidebar-text">Math Solver</span></a></li>
+                    <li><a href="#"><i class="fas fa-chalkboard-teacher"></i> <span class="sidebar-text">Math Tutor</span></a></li>
+                    <li><a href="#"><i class="fa-solid fa-calendar-days"></i> <span class="sidebar-text">Quiz Me</span></a></li>
+                    <li><a href="mock.html"><i class="fas fa-question-circle"></i> <span class="sidebar-text">Mock test</span></a></li>
+                    <li><a href="#"><i class="fas fa-file-pdf"></i> <span class="sidebar-text">PDF Homework Helper</span></a></li>
+                    <li><a href="#"><i class="fas fa-paint-brush"></i> <span class="sidebar-text">AI Whiteboard</span></a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-history">
+                <h3><i class="fas fa-history"></i> <span class="sidebar-text">History</span></h3>
+                <ul>
+                    <li><a href="#"><span class="sidebar-text">Today</span></a></li>
+                    <li><a href="#"><span class="sidebar-text">New Question</span></a></li>
+                </ul>
+            </div>
+            <div class="sidebar-footer">
+               <a href="login.html"> <button class="login-btn"><span class="sidebar-text">Log in here!</span></button></a>
+                <div class="supports">
+                    <span class="sidebar-text">Supports:</span>
+                    <div class="support-icons">
+                        <i class="fab fa-android"></i>
+                        <i class="fab fa-apple"></i>
+                        <i class="fab fa-discord"></i>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="main-header">
+                <div class="logo">
+                    <h1 class="logo-text"><img class = "icon_main" src="icon.jpeg" alt=""></i> MathPath</h1>
+                     <!-- <h1 class="logo-text"><i class="fas fa-cube fa-2x"></i> MathPath</h1> -->
+                </div>
+            </header>
+            <div class="chat-container">
+                <!-- Hidden file input for uploads -->
+                <input type="file" id="file-upload-input" accept="image/*" hidden>
+
+                <!-- Chatbox for messages -->
+                <div id="chatbox" style="width:100%; height:300px; border:1px solid #ccc; padding:10px; overflow-y:auto; margin-bottom:10px;"></div>
+
+             <div class="chat-input-area">
+  <textarea id="chat-input" placeholder="Type text, or paste / drag an image here. (Type \ or $ to insert formula)"></textarea>
+  
+  <div class="chat-toolbar">
+    <div class="toolbar-icons">
+      <button id="camera-btn"><img src="http://mathos.ai/static/media/SnapIcon.948fa577d35a5ca31a5801460679faee.svg" alt=""></button>
+      <button id="upload-btn"><img src="http://mathos.ai/static/media/ImageIcon.01d7de0abfcc1506aab7b065a155f95c.svg" alt=""></button>
+      <button id="equation-palette-btn"><img src="http://mathos.ai/static/media/FormulaIcon.f63f826e1a57a818b9e54e28795e58a5.svg" alt=""></button>
+      <button><img src="http://mathos.ai/static/media/MicrophoneIcon.716cbb3386e4e258bc92a98509eb025b.svg" alt=""></button>
+    </div>
+
+    
+    <button class="send-btn" onclick="send()">
+      <i class="fas fa-paper-plane"></i> SEND
+    </button>
+  </div>
+</div>
+
+            </div>
+            
+            <!-- Equation Palette (Initially Hidden) -->
+            <div class="equation-palette" id="equation-palette">
+                <div class="palette-header">
+                    <span>Basic</span>
+                    <button class="close-palette-btn">&times;</button>
+                </div>
+                <div class="palette-grid">
+                    <button data-symbol="αβγ">αβγ</button> <button data-symbol="≥">≥</button> <button data-symbol="≠">≠</button>
+                    <button data-symbol="∈">∈</button> <button data-symbol="sin">sin</button> <button data-symbol="cos">cos</button>
+                    <button data-symbol="□/□">□/□</button> <button data-symbol="□²">□²</button> <button data-symbol="x^□">x^□</button>
+                    <button data-symbol="√□">√□</button> <button data-symbol="log□">log□</button> <button data-symbol="π">π</button>
+                    <button data-symbol="+">+</button> <button data-symbol="-">-</button> <button data-symbol="×">×</button>
+                    <button data-symbol="÷">÷</button> <button data-symbol="=">=</button> <button data-symbol="∞">∞</button>
+                </div>
+            </div>
+
+            <!-- Example Problem Cards -->
+            <div class="examples-section">
+                <div class="example-card" id="example-image">
+                    <h4>Solve with image</h4>
+                    <div class="math-problem">Let f(x) = 3/2x + 10,
+g(x) = x² - 3.
+What is the value of f(-2 - g(3))?</div>
+                </div>
+                <div class="example-card" id="example-mixed">
+                    <h4>Solve with mixed contents</h4>
+                    <div class="math-problem">Solve this equation:
+(3) Solve x (Please use theorem 3.10): x² + 2x = 0
+
+The theorem is:
+Theorem 3.10. For any quadratic equation, it can be written as (x + m)² = n</div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+     <main class="landing-page">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <img class = "icon_main" src="icon.jpeg" style="width: 5vw;" alt="logo">
+                <h1>The Best AI Math Solver and Calculator</h1>
+                <p>Bringing Joy and Confidence to Math Learning</p>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-section">
+            <div class="feature-row">
+                <div class="feature-text">
+                    <h2>Graphical Understanding In Real Time</h2>
+                </div>
+                <div class="feature-image">
+                    <img src="http://mathos.ai/static/media/plotHyperbola.02abbc79d422274b9718.webp">
+                </div>
+            </div>
+            <div class="feature-row">
+                <div class="feature-text">
+                    <h2>Video Tutorial by Demand</h2>
+                </div>
+                <div class="feature-image">
+                     <img src="http://mathos.ai/static/media/videoTutorialSnap.c077b1cad6b96cf9b8f4.webp">
+                </div>
+            </div>
+            <div class="feature-row">
+                <div class="feature-text">
+                    <h2>Get Step-by-step Solution and Learn 10x Faster</h2>
+                </div>
+                <div class="feature-image">
+                    <img src="http://mathos.ai/static/media/stepByStepWhite.d2ccfbbe6dfda0dfcf8a.png">
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Us Section -->
+        <section class="why-us-section">
+            <h2>Why MathPath</h2>
+            <div class="why-us-content">
+                <div class="accordion-container">
+                    <div class="accordion-item">
+                        <button class="accordion-header">Get the Most Accurate Solution<i class="fas fa-chevron-down"></i></button>
+                        <div class="accordion-body">
+                            <p>MathPath offers the most accurate math solutions across every level and topic—whether you're solving algebra, calculus, quadratic equation, scientific notation, or anything in between. Our advanced AI model is 20% more accurate than ChatGPT and any other tool out there, giving you answers you can trust. No other math solver can match this level of precision!</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Learn from Your Personalized AI Tutor<i class="fas fa-chevron-down"></i></button>
+                        <div class="accordion-body">
+                            <p>With MathPath is your own AI math tutor that really understands how you learn. MathPath can recognize your drawings and voice inputs, so whether you prefer to speak your problems or sketch them out, we’re here to help. Our tutor follows your pace and provides the most tailored guidance and explanations for each step of your work. This way, you can easily learn, digest, and understand complex math concepts without the struggle.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Homework Help That's Quick and Easy<i class="fas fa-chevron-down"></i></button>
+                        <div class="accordion-body">
+                            <p>Getting help with MathPath is super easy and convenient. You can solve your homework problems using a variety of interaction methods—whether it's uploading and editing PDF, snapping a photo of the problem, typing out the text, drawing it, or even using your voice. Plus, with multi-device sync, you can switch between your phone, tablet, or laptop without missing a beat. MathPath makes it simple to get the answers and explanations you need, no matter how or where you're working..</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">All the Math Tools You Need<i class="fas fa-chevron-down"></i></button>
+                        <div class="accordion-body">
+                           <p>MathPath comes with everything—an advanced graphing calculator, dedicated calculators for different math topics, and more. From solving equations to plotting graphs, we've got the tools that make learning math super easy. And best of all, it's fun and interactive, so you'll stay motivated and engaged.</p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="why-us-image">
+                    <img src="https://www.mathos.ai/static/media/AITutorMini.eec9d2414052ce41aa84.webp" alt="Illustration of student learning math">
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="accordion-container">
+                 <div class="accordion-item">
+                    <button class="accordion-header">What are the best math solvers?<i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-body"><p>MathPath is one of the best and most accurate AI math solvers and calculators with step-by-step explanations. In recent benchmark tests, Mathos outperformed the most advanced frontier models such as DeepSeek R1, Mathway, Julius, Photomath, and Symbolab — delivering over 17% higher accuracy. Whether you're solving algebra, calculus, or complex equations, Mathos is the top choice for students and professionals..</p></div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">What kinds of math problems can MathPath solve?<i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-body"><p>MathPath can handle all kinds of math problems, from basic arithmetic calculation to calculus and everything in between. Whether you need help with algebra, geometry, or even graphing, MathPath has the tools to help you succeed.</p></div>
+                </div>
+                 <div class="accordion-item">
+                    <button class="accordion-header">How accurate are the solutions from MathPath?<i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-body"><p>MathPath’s solutions are built on an advanced model that offers 20% higher accuracy than ChatGPT, ensuring reliable answers and explanations to all your math problems.</p></div>
+                </div>
+                 <div class="accordion-item">
+                    <button class="accordion-header">What are the best graphing, fraction, algebra, derivative AI math calculators?<i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-body"><p>MathPath is the most advanced AI calculator for graphing, fractions, algebra, and derivatives — delivering as much as 14% better performance in accuracy and speed compared to top alternatives like DeepSeek R1, Mathway, and Symbolab. With precise step-by-step solutions and real-time graphing capabilities, Mathos leads the industry in educational AI tools for STEM students..</p></div>
+                </div>
+                 <div class="accordion-item">
+                    <button class="accordion-header">Can MathPath help with my textbooks, notes, homework on PDFs?<i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-body"><p>Yes! With MathPath's PDF Homework Helper, you can upload your textbooks or notes, circle a question, and get a step-by-step solution. You can also chat with your study materials, making learning from PDFs more interactive and engaging.</p></div>
+                </div>
+                 <div class="accordion-item">
+                    <button class="accordion-header">How does the personalized AI Tutor in MathPath work?<i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-body"><p>The AI Tutor in MathPath adapts to your learning style, providing tailored explanations and step-by-step guidance based on the way you solve problems. Whether you use voice input, text, or image upload, the AI Tutor helps you at your own pace, making sure you understand every step.</p></div>
+                </div>
+                 <div class="accordion-item">
+                    <button class="accordion-header">Is MathPath easy to use on multiple devices?<i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-body"><p>Yes! MathPath supports multi-device sync, so you can start solving problems on your phone and pick up where you left off on your smart phone, laptop or tablet. All your learning history and notes are saved across devices.</p></div>
+                </div>
+            </div>
+        </section>
+           <footer>
+            <div class="footer-left">
+                <div class="logo">
+                    <div class="logo-box">
+                        <img class="icon_main" src="icon.jpeg" style="width: 3vw ; border-radius: 8px;" alt="Logo">
+                    </div>
+                    <h2 class="logo-text">MathPath</h2>
+                </div>
+                <p class="copyright">© 2025 MathPath. All rights reserved</p>
+                <p class="disclaimer">MathPath can make mistakes. Please cross-validate crucial steps.</p>
+            </div>
+            <div class="footer-right">
+                <div class="footer-column">
+                    <h3>Tools</h3>
+                    <ul>
+                        <li><a href="#">Ask</a></li>
+                        <li><a href="#">Quiz Me</a></li>
+                        <li><a href="#">PDF Homework Helper</a></li>
+                        <li><a href="#">Calculator</a></li>
+                        <li><a href="#">Graph Calculator</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>About</h3>
+                    <ul>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">Download</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <div class="socials">
+                        <div class="icon"><a href="https://linkedin.com"><i class="fa-brands fa-linkedin"></i></href></div>
+                        <div class="icon"><a href="https://github.com/"><i class="fa-brands fa-github"></i></href></div>
+                        <div class="icon"><a href="https://telegram.com/"><i class="fa-solid fa-phone"></i></href></div>
+                        <div class="icon"><a href="https://instagram.com/"><i class="fa-brands fa-instagram"></i></href></div>
+                    </div>
+                </div>
+
+        </footer>
+
+    <!-- Link to your JavaScript file -->
+    <script src="script.js"></script>
+    <script>
+        async function send() {
+            let input = document.getElementById("chat-input").value.trim();
+            if (!input) return; // do nothing if input is empty
+
+            let chatbox = document.getElementById("chatbox");
+            chatbox.innerHTML += "<p><b>You:</b> " + input + "</p>";
+            chatbox.scrollTop = chatbox.scrollHeight;
+
+            try {
+                let response = await fetch("http://localhost:5000/chat", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ message: input })
+                });
+                let data = await response.json();
+                chatbox.innerHTML += "<p><b>Bot:</b> " + data.reply + "</p>";
+                chatbox.scrollTop = chatbox.scrollHeight;
+            } catch (err) {
+                chatbox.innerHTML += "<p><b>Bot:</b> Error connecting to server.</p>";
+            }
+
+            document.getElementById("chat-input").value = "";
+        }
+    </script>
+</body>
+</html>

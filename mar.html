@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purple Cube Design</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .cube-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        
+        .cube-container {
+            width: 200px;
+            height: 200px;
+            margin: 30px 0;
+            perspective: 800px;
+        }
+        
+        .cube {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: rotateX(-15deg) rotateY(15deg);
+            transition: transform 0.5s ease;
+        }
+        
+        .cube-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 40px;
+            font-weight: bold;
+            background: rgba(126, 58, 242, 0.9);
+            border: 2px solid rgba(106, 38, 222, 0.9);
+            color: white;
+            box-shadow: 0 0 20px rgba(126, 58, 242, 0.4);
+        }
+        
+        .cube-face-front {
+            transform: translateZ(100px);
+            background: linear-gradient(135deg, #8b5cf6 0%, #7e3af2 100%);
+        }
+        
+        .cube-face-back {
+            transform: rotateY(180deg) translateZ(100px);
+            background: linear-gradient(135deg, #7e3af2 0%, #6c2bd9 100%);
+        }
+        
+        .cube-face-right {
+            transform: rotateY(90deg) translateZ(100px);
+            background: linear-gradient(135deg, #7e3af2 0%, #6c2bd9 100%);
+        }
+        
+        .cube-face-left {
+            transform: rotateY(-90deg) translateZ(100px);
+            background: linear-gradient(135deg, #7e3af2 0%, #6c2bd9 100%);
+        }
+        
+        .cube-face-top {
+            transform: rotateX(90deg) translateZ(100px);
+            background: linear-gradient(135deg, #8b5cf6 0%, #7e3af2 100%);
+        }
+        
+        .cube-face-bottom {
+            transform: rotateX(-90deg) translateZ(100px);
+            background: linear-gradient(135deg, #7e3af2 0%, #6c2bd9 100%);
+        }
+        
+        .content-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            width: 100%;
+        }
+        
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(126, 58, 242, 0.15);
+        }
+        
+        .card-header {
+            margin-bottom: 20px;
+        }
+        
+        .card-icon {
+            font-size: 36px;
+            color: #7e3af2;
+            margin-bottom: 15px;
+        }
+        
+        .card-title {
+            font-size: 22px;
+            color: #2d2d2d;
+            margin-bottom: 15px;
+        }
+        
+        .symbols {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .symbol {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f5f3ff;
+            border-radius: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #7e3af2;
+            box-shadow: 0 5px 10px rgba(126, 58, 242, 0.1);
+        }
+        
+        .letters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .letter {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #7e3af2;
+            border-radius: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 5px 10px rgba(126, 58, 242, 0.2);
+        }
+        
+        h1 {
+            font-size: 36px;
+            color: #2d2d2d;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .controls {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        button {
+            padding: 12px 20px;
+            background: #7e3af2;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        button:hover {
+            background: #6c2bd9;
+        }
+        
+        @media (max-width: 768px) {
+            .content-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .cube-container {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .cube-face {
+                font-size: 30px;
+            }
+            
+            .cube-face-front {
+                transform: translateZ(75px);
+            }
+            
+            .cube-face-back {
+                transform: rotateY(180deg) translateZ(75px);
+            }
+            
+            .cube-face-right {
+                transform: rotateY(90deg) translateZ(75px);
+            }
+            
+            .cube-face-left {
+                transform: rotateY(-90deg) translateZ(75px);
+            }
+            
+            .cube-face-top {
+                transform: rotateX(90deg) translateZ(75px);
+            }
+            
+            .cube-face-bottom {
+                transform: rotateX(-90deg) translateZ(75px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Purple Cube Design</h1>
+        
+        <div class="cube-section">
+            <div class="cube-container">
+                <div class="cube" id="cube">
+                    <div class="cube-face cube-face-front">B</div>
+                    <div class="cube-face cube-face-back">C</div>
+                    <div class="cube-face cube-face-right">D</div>
+                    <div class="cube-face cube-face-left">+</div>
+                    <div class="cube-face cube-face-top">-</div>
+                    <div class="cube-face cube-face-bottom">Σ</div>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <button onclick="rotateCube('x')">Rotate X</button>
+                <button onclick="rotateCube('y')">Rotate Y</button>
+                <button onclick="rotateCube('reset')">Reset</button>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-symbols"></i>
+                    </div>
+                    <h2 class="card-title">Symbols</h2>
+                </div>
+                <div class="symbols">
+                    <div class="symbol">+</div>
+                    <div class="symbol">-</div>
+                    <div class="symbol">Σ</div>
+                    <div class="symbol">Π</div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-font"></i>
+                    </div>
+                    <h2 class="card-title">Letters</h2>
+                </div>
+                <div class="letters">
+                    <div class="letter">X</div>
+                    <div class="letter">=</div>
+                    <div class="letter">J</div>
+                    <div class="letter">U</div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h2 class="card-title">Cube Elements</h2>
+                </div>
+                <div class="letters">
+                    <div class="letter">B</div>
+                    <div class="letter">C</div>
+                    <div class="letter">D</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let xRotation = -15;
+        let yRotation = 15;
+        const cube = document.getElementById('cube');
+        
+        function rotateCube(axis) {
+            if (axis === 'x') {
+                xRotation -= 15;
+            } else if (axis === 'y') {
+                yRotation += 15;
+            } else if (axis === 'reset') {
+                xRotation = -15;
+                yRotation = 15;
+            }
+            
+            cube.style.transform = `rotateX(${xRotation}deg) rotateY(${yRotation}deg)`;
+        }
+        
+        // Add auto-rotation for visual effect
+        setInterval(() => {
+            yRotation += 0.5;
+            cube.style.transform = `rotateX(${xRotation}deg) rotateY(${yRotation}deg)`;
+        }, 100);
+    </script>
+</body>
+</html>
